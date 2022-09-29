@@ -23,12 +23,22 @@ end
 def longer_shorter_list(l1, l2)
   count1 = list_node_count(l1)
   count2 = list_node_count(l2)
-  
+
   if count1 >= count2
     return l1, l2
   else
     return l2, l1
   end
+end
+
+def create_node(list, current_node, val)
+  new_node = ListNode.new(val)
+  
+  current_node&.next = new_node
+  
+  list = new_node if not list
+  
+  return list, new_node
 end
 
 def add_two_numbers(l1, l2)
@@ -38,7 +48,8 @@ def add_two_numbers(l1, l2)
   shorter_list_node = shorter_list
   results_list = nil
   carry = 0
-  
+  current_results_node = nil
+
   while longer_list_node
     num1 = longer_list_node.val
     num2 = shorter_list_node ? shorter_list_node.val : 0
@@ -50,29 +61,15 @@ def add_two_numbers(l1, l2)
       num3 = sum - 10
       carry = 1
     end
-   
-    new_results_node = ListNode.new(num3)
-    
-    if not results_list
-      results_list = current_results_node = new_results_node
-    else
-      current_results_node.next = new_results_node
-      current_results_node = new_results_node
-    end
+
+    results_list, current_results_node = create_node(results_list, current_results_node, num3)
 
     longer_list_node = longer_list_node.next
     shorter_list_node = shorter_list_node&.next
   end
-  
-  if carry > 0
-    new_results_node = ListNode.new(carry)
 
-    if not results_list
-      results_list = current_results_node = new_results_node
-    else
-      current_results_node.next = new_results_node
-      current_results_node = new_results_node
-    end
+  if carry > 0
+    results_list, current_results_node = create_node(results_list, current_results_node, carry)
   end       
 
   return results_list
