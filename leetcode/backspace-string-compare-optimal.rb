@@ -7,7 +7,7 @@ def backspace_compare(s, t)
   p_s = s.length - 1
   p_t = t.length - 1
   
-  while (p_s >= || p_t >= 0)
+  while (p_s >= 0 || p_t >= 0)
     if (s[p_s] == '#') || (t[p_t] == '#')
       if s[p_s] == '#'
         backcount = 2
@@ -21,14 +21,14 @@ def backspace_compare(s, t)
       end
       
       if t[p_t] == '#'
-        backcount =
-        2
+        backcount = 2
         while backcount > 0
           p_t -= 1
           backcount -= 1
-          if t[p_] == '#'
+          if t[p_t] == '#'
             backcount += 2
           end
+        end
       end
     else
       # Both string are at a postion in which their character
@@ -38,9 +38,9 @@ def backspace_compare(s, t)
       else
         p_s -= 1
         p_t -= 1
+      end
     end
   end
   
   return true
 end
-    
