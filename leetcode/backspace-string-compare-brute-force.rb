@@ -1,35 +1,33 @@
 # https://leetcode.com/problems/backspace-string-compare/
+
+# @param {String} str
+# @return {String}
+def output_string(str)
+  str_array = str.split("")
+  output_array = []
+  
+  str_array.each do |char|
+    if char == '#'
+      output_array.pop
+    else
+      output_array.push(char)
+    end
+  end
+  
+  return output_array.join
+end
+
 # @param {String} s
 # @param {String} t
 # @return {Boolean}
 def backspace_compare(s, t)
-  s_temp = s.split("")
-  t_temp = t.split("")
-  s_array = []
-  t_array = []
+  s_output = output_string(s)
+  t_output = output_string(t)
   
-  s_temp.each do |c|
-    if c == '#'
-      s_array.pop
-    else
-      s_array.push(c)
-    end 
-  end
-  
-  t_temp.each do |c|
-    if c == '#'
-      t_array.pop
-    else
-      t_array.push(c)
-    end
-  end
-    
-  if s_array.length != t_array.length
+  if s_output.length != t_output.length
     return false
   else
-    s_str = s_array.join
-    t_str = t_array.join
-    if s_str == t_str
+    if s_output == t_output
       return true
     else
       return false
