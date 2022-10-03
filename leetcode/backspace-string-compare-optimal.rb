@@ -32,8 +32,13 @@ def backspace_compare(s, t)
       end
     else
       # Both string are at a postion in which their character
-      # is sure to be in the final string. 
-      if s[p_s] != t[p_t]
+      # is sure to be in the final string.
+      
+      # Ruby's -1 points to the last character
+      char_s = p_s < 0 ? "" : s[p_s]
+      char_t = p_t < 0 ? "" : t[p_t]
+      
+      if char_s != char_t
         return false
       else
         p_s -= 1
