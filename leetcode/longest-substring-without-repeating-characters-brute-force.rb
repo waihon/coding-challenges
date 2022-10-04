@@ -6,21 +6,20 @@ def length_of_longest_substring(s)
   # Optimization
   return s.length if s.length <= 1
 
-  max_length = 0
+  longest = 0
   
-  for p1 in 0..(s.length - 1)
-    unique_chars = Hash.new(false)
-    p2 = p1
-    while p2 <= (s.length - 1)
-      if unique_chars[s[p2]] 
+  for left in 0..(s.length - 1)
+    seen_chars = Hash.new(false)
+    for right in left..(s.length - 1)
+      current_char = s[right]
+      if seen_chars[current_char] 
         break
       else
-        unique_chars[s[p2]] = true
-        max_length = [max_length, unique_chars.length].max
-        p2 += 1
+        seen_chars[current_char] = true
+        longest = [longest, seen_chars.length].max
       end
     end
   end
   
-  return max_length
+  return longest 
 end
