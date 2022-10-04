@@ -1,6 +1,11 @@
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 # @param {String} s
 # @return {Integer}
 def length_of_longest_substring(s)
+  # Optimization
+  return s.length if s.length <= 1
+
   max_length = 0
   
   for p1 in 0..(s.length - 1)
