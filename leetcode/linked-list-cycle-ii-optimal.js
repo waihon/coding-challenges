@@ -22,8 +22,8 @@ const detectCycle = function(head) {
   let tortoise = head, hare = head;
   
   while (hare && hare.next) {
-    tortoise = tortoise.next;  // toitoise move 1 step
-    hare = hare.next.next; // hair more 2 steps
+    tortoise = tortoise.next;  // tortoise moves 1 step
+    hare = hare.next.next; // hair moves 2 steps
  
     if (tortoise === hare) { // found a meeting point, i.e. cycle detected
       let p1 = head;
