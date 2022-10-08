@@ -16,21 +16,20 @@
 def detectCycle(head)
   return nil if head.nil?
   
-  slow = fast = head
+  tortoise = hare = head
   
-  while fast && fast.next
-    slow = slow.next  # toitoise takes 1 step
-    fast = fast.next&.next # hair takes 2 steps
+  while hare && hare.next
+    tortoise = tortoise.next  # toitoise moves 1 step
+    hare = hare.next&.next # hair moves steps
  
-    if slow == fast # found a meeting point, i.e. cycle detected
-      left = head
-      right = fast
-      while (left != right)
-        left = left.next
-        right = right.next
+    if tortoise == hare # found a meeting point, i.e. cycle detected
+      p1 = head
+      p2 = tortoise
+      while (p1 != p2)
+        p1 = p1.next
+        p2 = p2.next
       end
-      cycle_begins = left
-      return cycle_begins
+      return p1
     end
   end
 
