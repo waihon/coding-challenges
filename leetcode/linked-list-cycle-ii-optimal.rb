@@ -19,7 +19,7 @@ def detectCycle(head)
   tortoise = hare = head
   
   while hare && hare.next
-    tortoise = tortoise.next  # toitoise moves 1 step
+    tortoise = tortoise.next  # tortoise moves 1 step
     hare = hare.next&.next # hair moves steps
  
     if tortoise == hare # found a meeting point, i.e. cycle detected
