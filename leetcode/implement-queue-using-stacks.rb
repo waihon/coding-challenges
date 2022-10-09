@@ -30,7 +30,6 @@ class MyQueue
     out_stack[-1] # short hand for out_stack[out_stack.length - 1]
   end
 
-
   # @return {Boolean}
   def empty()
     in_stack.size.zero? && out_stack.size.zero?    
@@ -41,11 +40,11 @@ class MyQueue
   attr_accessor :in_stack, :out_stack
   
   def move_in_to_out 
-    if out_stack.size.zero?
-      for i in 0..(in_stack.length - 1)
-        item = in_stack.pop
-        out_stack.push(item)
-      end
+    return if out_stack.length > 0
+    
+    while in_stack.length > 0
+      item = in_stack.pop
+      out_stack.push(item)
     end
   end
 end
