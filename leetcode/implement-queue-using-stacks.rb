@@ -4,45 +4,47 @@
 # queue (push, peek, pop, and empty).
 class MyQueue
   def initialize()
-    @stack1 = []
-    @stack2 = []
+    @in_stack = []
+    @out_stack = []
   end
 
   # @param {Integer}
   # @return {Void}
   def push(x)
-    @stack1.push(x)    
+    in_stack.push(x)    
   end
 
 
   # @return {Integer}
   def pop()
-    transfer
+    move_in_to_out
 
-    @stack2.pop
+    out_stack.pop
   end
 
 
   # @return {Integer}
   def peek()
-    transfer
+    move_in_to_out 
 
-    @stack2[-1]
+    out_stack[-1] # short hand for out_stack[out_stack.length - 1]
   end
 
 
   # @return {Boolean}
   def empty()
-    @stack1.size.zero? && @stack2.size.zero?    
+    in_stack.size.zero? && out_stack.size.zero?    
   end
 
   private
   
-  def transfer
-    if @stack2.size.zero?
-      for i in 0..(@stack1.length - 1)
-        item = @stack1.pop
-        @stack2.push(item)
+  attr_accessor :in_stack, :out_stack
+  
+  def move_in_to_out 
+    if out_stack.size.zero?
+      for i in 0..(in_stack.length - 1)
+        item = in_stack.pop
+        out_stack.push(item)
       end
     end
   end
