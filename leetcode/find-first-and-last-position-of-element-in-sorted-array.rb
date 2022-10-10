@@ -7,13 +7,36 @@
 # @param {Integer} target
 # @return {Integer[]}
 def search_range(nums, target)
+  mid = binary_search(nums, target)
+  
+  if mid == -1
+    return [mid, mid]
+  else
+    return build_array(nums, target, mid)
+  end
+end
+
+# @param {Integer[]} nums
+# @param {Integer} target
+# @return {Integer[]}
+def binary_search(nums, target)
+  return -1 if nums.length == 0
+  
+  if nums.length == 1
+    if nums[0] == target
+      return 0
+    else
+      return -1
+    end
+  end
+    
   left = 0; right = nums.length - 1
   
   while left <= right
     mid = ((left + right) / 2).floor
     found_value = nums[mid]
     if found_value == target
-      return build_array(nums, target, mid)
+      return mid
     elsif found_value > target
       right = mid - 1
     else # found_value < target
@@ -22,7 +45,7 @@ def search_range(nums, target)
   end
   
   # not found
-  return [-1, -1]
+  return -1
 end
 
 # @param {Integer[]} nums
@@ -58,11 +81,11 @@ def build_array(nums, target, mid)
   
   if left && right
     return [left, right]
-  elsif left && !right
+  elsif left
     return [left, mid]
-  elsif right & !left
+  elsif right
     return [mid, right]
   else
-    return [mid]
+    return [mid, mid]
   end
 end
