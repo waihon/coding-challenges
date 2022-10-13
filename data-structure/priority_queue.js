@@ -26,9 +26,17 @@ class PriorityQueue {
   }
   
   pop() {
-    if (this.size() > 1 {
-      this._shape(0, this.rec(c) - 1
+    if (this.size() > 1) {
+      // For sapce complexity consideration, instead of calling `shift`
+      // to retrieve the greatest value, we swap the 1st and last element
+      // of the array, and then calling `pop` to get the greatest value.
+      this._swap(0, this.size() - 1);
     }
+    const poppedValue = this._heap.pop();
+    this._siftDown();
+
+    return poppedValue;
+  }
 
   _parent(index) {
     return Math.floor((index - 1) / 2);
@@ -39,11 +47,19 @@ class PriorityQueue {
   _leftChild(index) {
     (index * 2) + 1;
   }
+
+  _leftChildExists(index) {
+    this._leftChild(index) < this.size();
+  }
   
   _rightChild(index) {
     (index * 2) + 2;
   }
   
+  _rightChildExists(index) {
+    this._rightChild(index) < this.size();
+  }
+
   _swap(i, j) {
     const temp = this._heap[i];
     this._heap[j] = this._heap[i];
@@ -64,4 +80,22 @@ class PriorityQueue {
       nodeIndex = this._parent(nodeIndex);
     }
   }       
+
+  _siftDown() {
+    // Starting at the root
+    let nodeIndex = 0;
+    while (
+      (this._leftChildExists(nodeIndex) &&
+      this._compare(this._leftChild(nodeIndex), nodeIndex)) || 
+      (this._rightChildExists(nodeIndex) &&
+      this._compare(this._rightChild(nodeIndex), nodeIndex))
+    ) {
+      const greaterNodeIndex = this._rightChildExists(index) &&
+        this._compare(this._rightChild(nodeIndex), this._leftChild(nodeIndex))
+          ? this._rightChild(nodeIndex)
+          : this._leftChild(nodeIndex);
+      this._swap(greaterChildIndex, nodeIndex);
+      nodeIndex = greaterChildIndex;
+    }
+  }
 }
