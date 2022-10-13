@@ -1,4 +1,6 @@
 class PriorityQueue {
+  /* Public methods */
+  
   constructur(comparator = (a, b) => a > b) {
     this._heap = [];
     this._comparator = comparator;
@@ -9,7 +11,7 @@ class PriorityQueue {
   }
   
   isEmpty() {
-    return size === 0;
+    return this.size() === 0;
   }
   
   peek() {
@@ -19,6 +21,7 @@ class PriorityQueue {
   push(value) {
     this._heap.push(value);
     this._siftUp();
+    
     return this.size();
   }
   
@@ -31,6 +34,8 @@ class PriorityQueue {
     return Math.floor((index - 1) / 2);
   }
   
+  /* Private method */
+  
   _leftChild(index) {
     (index * 2) + 1;
   }
@@ -39,10 +44,24 @@ class PriorityQueue {
     (index * 2) + 2;
   }
   
+  _swap(i, j) {
+    const temp = this._heap[i];
+    this._heap[j] = this._heap[i];
+    this._heap[i] = temp;
+  }
+  
+  _compare(i, j) {
+    return this._comparator(this._heap[i], this._heap[j]);
+  }
+  
   _siftUp() {
-    let nodeIdx = this.size() - 1;
-    while (nodeIdx > 0 && this._compare(nodeIdx, this._parent(nodeIdx)) {
-      this._swap(nodeIdx, this._parent(nodeIdx));
-      nodeIdx = this._peek(nodeIdx);
-           
+    // Starting with the newly inserted node which is the last element of array
+    let nodeIndex = this.size() - 1;
+    // We'll iterate until we reach the 2nd level, at which we'll compare one last
+    // time with the parent node.
+    while (nodeIndex > 0 && this._compare(nodeIndex, this._parent(nodeIndex)) {
+      this._swap(nodeIndex, this._parent(nodeIndex));
+      nodeIndex = this._parent(nodeIndex);
+    }
+  }       
 }
