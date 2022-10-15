@@ -14,4 +14,16 @@ def two_sum(nums, target)
       end
     end
   end
+  return nil
+end
+
+if __FILE__ == $0
+  raise RuntimeError unless two_sum([1, 3, 7, 9, 2], 11) == [3, 4]
+  raise RuntimeError unless two_sum([1, 3, 7, 9, 2], 25) == nil
+  raise RuntimeError unless two_sum([], 1) == nil
+  raise RuntimeError unless two_sum([5], 5) == nil
+  raise RuntimeError unless two_sum([1, 6], 7) == [0, 1]
+  raise RuntimeError unless two_sum([2, 7, 11, 15], 9) == [0, 1]
+  raise RuntimeError unless two_sum([3, 2, 4], 6) == [1, 2]
+  raise RuntimeError unless two_sum([3, 3], 6) == [0, 1]
 end
