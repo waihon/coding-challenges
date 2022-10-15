@@ -54,3 +54,20 @@ def backspace_compare(s, t)
   
   return true
 end
+
+if __FILE__ == $0
+  begin
+    raise RuntimeError unless backspace_compare("ab#z", "az#z") == true
+    raise RuntimeError unless backspace_compare("abcd#d", "acc#c") == false
+    raise RuntimeError unless backspace_compare("x#y#z#", "a#") == true
+    raise RuntimeError unless backspace_compare("a###b", "b") == true
+    raise RuntimeError unless backspace_compare("Ab#z", "AB#Z") == false
+    raise RuntimeError unless backspace_compare("ab#c", "ad#c") == true
+    raise RuntimeError unless backspace_compare("ab##", "c#d#") == true
+    raise RuntimeError unless backspace_compare("a#c", "b") == false
+  rescue RuntimeError => e
+    puts e.message + ": " + e.backtrace.inspect
+  else
+    puts "All test cases passed!"
+  end    
+end
