@@ -26,3 +26,18 @@ def max_area(heights)
   
   return max_area
 end
+
+if __FILE__ == $0
+  begin
+    raise RuntimeError unless max_area([7, 1, 2, 3, 9]) == 28
+    raise RuntimeError unless max_area([7]) == 0
+    raise RuntimeError unless max_area([]) == 0
+    raise RuntimeError unless max_area([6, 9, 3, 4, 5, 8]) == 32 
+    raise RuntimeError unless max_area([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
+    raise RuntimeError unless max_area([1, 1]) == 1
+  rescue RuntimeError => e
+    puts e.message + ": " + e.backtrace.inspect
+  else
+    puts "All test cases passed!"
+  end
+end
