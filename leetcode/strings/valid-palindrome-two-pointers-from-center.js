@@ -34,9 +34,12 @@ try {
   if (!(isValidPalindromeCenter("abc") === false)) throw new Error("Test Result Error");
   if (!(isValidPalindromeCenter("a") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeCenter("") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeCenter(" ") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeCenter("A man, a plan, a canal: Panama") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeCenter("race a car") === false)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeCenter("race car") === true)) throw new Error("Test Result Error");
   console.log("All test cases passed!");
 }
-catch {
+catch(err) {
   console.log(err.stack)
 }

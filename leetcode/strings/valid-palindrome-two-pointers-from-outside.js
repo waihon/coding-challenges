@@ -32,7 +32,10 @@ try {
   if (!(isValidPalindromeOutside("abc") === false)) throw new Error("Test Result Error");
   if (!(isValidPalindromeOutside("a") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeOutside("") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeOutside(" ") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeOutside("A man, a plan, a canal: Panama") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeOutside("race a car") === false)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeOutside("race car") === true)) throw new Error("Test Result Error");
   console.log("All test cases passed!");
 }
 catch(err) {

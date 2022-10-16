@@ -18,7 +18,10 @@ try {
   if (!(isValidPalindromeReverse("abc") === false)) throw new Error("Test Result Error");
   if (!(isValidPalindromeReverse("a") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeReverse("") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeReverse(" ") === true)) throw new Error("Test Result Error");
   if (!(isValidPalindromeReverse("A man, a plan, a canal: Panama") === true)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeReverse("race a car") === false)) throw new Error("Test Result Error");
+  if (!(isValidPalindromeReverse("race car") === true)) throw new Error("Test Result Error");
   console.log("All test cases passed!");
 }
 catch(err) {
