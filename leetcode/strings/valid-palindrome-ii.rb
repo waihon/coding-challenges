@@ -35,3 +35,20 @@ def sub_palindrome(s, left, right)
   
   return true
 end
+
+if __FILE__ == $0
+  begin
+    raise RuntimeError unless valid_palindrome("race a car") == true
+    raise RuntimeError unless valid_palindrome("abccdba") == true
+    raise RuntimeError unless valid_palindrome("abcdefdba") == false 
+    raise RuntimeError unless valid_palindrome("") == true 
+    raise RuntimeError unless valid_palindrome(" ") == true 
+    raise RuntimeError unless valid_palindrome("a") == true 
+    raise RuntimeError unless valid_palindrome("ab") == true 
+    raise RuntimeError unless valid_palindrome("race car") == true 
+  rescue RuntimeError => e
+    puts e.message + ": " + e.backtrace.inspect
+  else
+    puts "All test cases passed!"
+  end    
+end
