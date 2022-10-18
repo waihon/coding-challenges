@@ -23,9 +23,9 @@ end
 def reverse_between(head, left, right)
   current_pos = 1
   current_node = head
-  start = head # This should eventually points to m-1
+  start = head # This should eventually points to left - 1
   
-  # Make start -> left-1, and current_node -> left
+  # Make start -> left - 1, and current_node -> left
   while current_pos < left
     start = current_node
     current_node = current_node.next
