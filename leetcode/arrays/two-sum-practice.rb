@@ -7,6 +7,17 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
+  number_index_map = Hash.new()
+  for i in 0..(nums.length - 1)
+    number_to_find = target - nums[i]
+    if index = number_index_map[nums[i]]
+      return [index, i]
+    else
+      number_index_map[number_to_find] = i
+    end
+  end
+
+  return nil
 end
 
 if __FILE__ == $0
