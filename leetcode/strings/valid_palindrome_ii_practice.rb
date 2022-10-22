@@ -9,7 +9,7 @@ def valid_palindrome(s)
   left = 0
   right = s.length - 1
 
-  while left <= right
+  while left < right
     if s[left] != s[right]
       return sub_palindrome(s, left, right - 1) ||
              sub_palindrome(s, left + 1, right)
@@ -23,7 +23,7 @@ def valid_palindrome(s)
 end
 
 def sub_palindrome(s, left, right)
-  while left <= right
+  while left < right
     if s[left] != s[right]
       return false
     else
