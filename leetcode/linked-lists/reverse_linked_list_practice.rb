@@ -15,6 +15,16 @@ end
 # @param {ListNode} head
 # @return {ListNode}
 def reverse_list(head)
+  current = head
+  prev = nil
+  while current
+    next_ = current.next
+    current.next = prev
+    prev = current
+    current = next_
+  end
+
+  return prev
 end
 
 def array_to_linked_list(array)
